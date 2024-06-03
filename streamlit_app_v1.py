@@ -12,7 +12,7 @@ load_dotenv()
 # Below function establishes connection with cloud hosted db
 def get_db_connection():
     #db_url = os.getenv('db_url') 
-    db_url = st.secrets('db_url')
+    db_url = st.secrets['db_url']
     engine = create_engine(db_url)
     return engine
 
