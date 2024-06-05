@@ -6,6 +6,8 @@ import os
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from dotenv import load_dotenv
+import json
+import urllib3
 
 def get_crypto_data(symbol='BTC', market='USD', past_months=6):
     # Define API endpoint and parameters
@@ -59,6 +61,7 @@ def get_crypto_data(symbol='BTC', market='USD', past_months=6):
     df.rename(columns={'index': 'date'}, inplace=True)
     
     return df
+
 # Example usage:
 crypto_df = get_crypto_data(past_months=6)  # Fetch data for the past 6 months
 print(crypto_df)
