@@ -1,4 +1,4 @@
-# testing of Selenium module
+# initial testing of Selenium module (pending revision to scrapy and playwright)
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By

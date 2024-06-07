@@ -1,5 +1,6 @@
 # Project 7 - API data reetrieval
 # In this project, data will be fetched from specific sites with the objective of successfully connecting to an API and getting data.
+# This document contains initial test API calls to Alpha Vantage
 
 print('Hello world!')
 
