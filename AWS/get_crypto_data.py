@@ -60,14 +60,16 @@ def get_crypto_data(event, context):
   return time_series_data
 
 
-# Example usage (assuming Lambda context)
+# Example usage (assuming Lambda context) - check out indent after uncommenting
+# context = {}
 # event = {
-#   'symbol': 'ETH',
-#   'market': 'USD',
-#   'past_months': 12
-# }
+#     'symbol': 'ETH',
+#     'market': 'USD',
+#     'past_months': 12
+#  }
 # response = get_crypto_data(event, context)
-# return {
+#  return {
 #   'statusCode': 200,
 #   'body': response
 # }
+# print(response)
