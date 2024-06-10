@@ -15,7 +15,7 @@ with psycopg2.connect(path) as conn:
     cur = conn.cursor()
     try:
         delete_query = sql.SQL("DELETE FROM btc_prices WHERE date = %s")
-        cur.execute(delete_query, ('2023-06-06',))
+        cur.execute(delete_query, ('2025-06-05',))
         rows_deleted = cur.rowcount
         conn.commit()
         print("Deletion successful")

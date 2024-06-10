@@ -56,7 +56,7 @@ def get_crypto_data(event, context):
   # ... (implementation details omitted for brevity)
 
   # Return data as JSON
-  #return json.dumps(crypto_data)
+  # return json.dumps(crypto_data)
   return time_series_data
 
 
