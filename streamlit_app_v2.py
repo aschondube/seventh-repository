@@ -74,8 +74,8 @@ fig.update_traces(customdata=filtered_df[['title', 'price_change']].values)
 st.plotly_chart(fig)
 
 # Adding a date slider below the chart
-date_range = st.slider("Select Date Range", min_date, max_date, (min_date, max_date))
 
+date_range = st.slider("**Select Date Range to adjust the line chart above ↑**", min_date, max_date, (min_date, max_date))
 # Filter the dataframe based on the selected date range
 filtered_df = merged_df[(merged_df['date'] >= pd.to_datetime(date_range[0])) & (merged_df['date'] <= pd.to_datetime(date_range[1]))]
 
@@ -84,9 +84,12 @@ filtered_df = filtered_df.groupby('date').agg({'close': 'mean', 'title': 'first'
 filtered_df['price_change'] = filtered_df['close'].diff().fillna(0)
 filtered_df['price_change'] = filtered_df['price_change'].apply(lambda x: 'Increase' if x > 0 else 'Decrease' if x < 0 else 'No Change')
 
+# New table without NLP sentiment analysis score columns
+btc_news_df1 = btc_news_df[['date', 'title']]
+
 # Create the news table with the BTC price and price change indicator
-btc_news_df['price'] = btc_news_df['date'].map(filtered_df.set_index('date')['close'])
-btc_news_df['price_change'] = btc_news_df['date'].map(filtered_df.set_index('date')['price_change'])
+btc_news_df1['price'] = btc_news_df1['date'].map(filtered_df.set_index('date')['close'])
+btc_news_df1['price_change'] = btc_news_df1['date'].map(filtered_df.set_index('date')['price_change'])
 
 # Apply color to price based on increase or decrease
 def color_price(val):
@@ -95,8 +98,8 @@ def color_price(val):
 
 # Displaying the dataframe with btc news
 st.title("FT's BTC news in the past 6 months")
-styled_news_df = btc_news_df.style.map(color_price, subset=['price_change'])
+styled_news_df = btc_news_df1.style.map(color_price, subset=['price_change'])
 st.write(styled_news_df)
 
-
+print(btc_news_df)
 

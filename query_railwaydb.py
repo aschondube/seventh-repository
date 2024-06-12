@@ -11,14 +11,14 @@ load_dotenv()
 path = os.getenv('db_url1')
 
 
-with psycopg2.connect(path) as conn:
+with psycopg2.connect(path) as conn: # uncomment to execute your query
     cur = conn.cursor()
     try:
-        delete_query = sql.SQL("DELETE FROM btc_prices WHERE date = %s")
-        cur.execute(delete_query, ('2025-06-05',))
+        delete_query = sql.SQL("DELETE FROM btc_prices")
+        cur.execute(delete_query)
         rows_deleted = cur.rowcount
         conn.commit()
-        print("Deletion successful")
+        print("Query is successful")
     except (psycopg2.OperationalError, psycopg2.ProgrammingError) as error:
         print(f"Error deleting data: {error}")
     if rows_deleted > 0:
